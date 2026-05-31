@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Karthik Nethala is a Digital Marketing Strategist and Visual Storyteller based in AP, India, specializing in cinematic video, SEO, and brand architecture.">
+    <title>Karthik Nethala | Premium Creative Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@200;300;400;500&display=swap');
+
+        :root {
+            --bg-dark: #030303;
+            --bg-card: #0a0a0a;
+            --gold-light: #F3E5AB;
+            --gold-primary: #D4AF37;
+            --gold-dark: #AA7C11;
+            --text-main: #E0E0E0;
+            --text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Cursor - Only on devices with a mouse */
+        @media (pointer: fine) {
+            * {
+                cursor: none; 
+            }
+            .cursor-dot {
+                width: 8px;
+                height: 8px;
+                background-color: var(--gold-primary);
+                border-radius: 50%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 9999;
+                transition: width 0.2s, height 0.2s;
+            }
+            .cursor-outline {
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgba(212, 175, 55, 0.5);
+                border-radius: 50%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                z-index: 9998;
+                transition: 0.1s ease-out;
+            }
+        }
+
+        /* Hide custom cursor elements on touch devices */
+        @media (pointer: coarse) {
+            .cursor-dot, .cursor-outline {
+                display: none !important;
+            }
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Bodoni Moda', serif;
+            font-weight: 400;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #030303 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 9rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: var(--gold-primary);
+            margin-top: 2rem;
+            font-weight: 300;
+        }
+
+        /* Marquee Strip */
+        .marquee-container {
+            width: 100%;
+            background: var(--gold-primary);
+            color: var(--bg-dark);
+            padding: 1.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Containers */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+        }
+
+        .section-header span {
+            font-size: 1rem;
+            color: var(--gold-primary);
+            margin-right: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            text-transform: uppercase;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+        
+        .about-text strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .objective-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 4rem 3rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .objective-box::before {
+            content: '"';
+            font-family: 'Bodoni Moda', serif;
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.1);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+        }
+
+        /* Client Results Banner */
+        .results-banner {
+            background-color: var(--gold-primary); 
+            color: var(--bg-dark); 
+            padding: 6rem 2rem; 
+            text-align: center; 
+            margin: 4rem 0;
+        }
+
+        /* Visual Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-card);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            opacity: 0.7;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            opacity: 0.3;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: var(--gold-primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Bento Grid for Skills */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.05);
+        }
+
+        .bento-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .bento-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Minimal Timeline */
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            padding: 3.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            padding-left: 2rem;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+        }
+
+        .timeline-year {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+        }
+
+        .timeline-content h4 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 8rem 2rem 2rem;
+            text-align: center;
+            background: #000;
+        }
+
+        .big-footer-text {
+            font-size: clamp(3rem, 10vw, 10rem);
+            line-height: 0.9;
+            margin-bottom: 4rem;
+        }
+
+        .big-footer-text a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .big-footer-text a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-details {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .timeline-item { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+            nav { padding: 1.5rem; }
+            .footer-details { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav>
+        <div class="logo serif">K.N.</div>
+        <div style="letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase;">Based in AP, India</div>
+    </nav>
+
+    <header class="hero reveal">
+        <h1>Karthik<br><span class="gold-gradient-text">Nethala</span></h1>
+        <div class="hero-subtitle">Visual Storyteller & Digital Strategist</div>
+    </header>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            ✦ CINEMATIC VIDEO PRODUCTION ✦ DATA-DRIVEN MARKETING ✦ 3D TYPOGRAPHY ✦ BRAND ARCHITECTURE ✦ EVENT PROMOTION ✦ CINEMATIC VIDEO PRODUCTION ✦ DATA-DRIVEN MARKETING ✦ 3D TYPOGRAPHY ✦ BRAND ARCHITECTURE ✦ EVENT PROMOTION ✦
+        </div>
+    </div>
+
+    <section class="container" id="about">
+        <div class="section-header reveal">
+            <span>01</span>
+            <h2>The Vision</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                I bridge the gap between cinematic artistry and hard data. When you work with me, <strong>you get more than just beautiful design—you get a strategic asset built to perform.</strong><br><br>
+                Whether it is executing high-end <strong>4K video editing and 3D typography</strong> or structuring robust <strong>SEO and lead-generation campaigns</strong>., my focus is entirely on your growth. You get a brand that commands attention, messaging that builds trust, and data-driven marketing that converts your audience into loyal customers.
+            </div>
+            <div class="objective-box reveal" style="transition-delay: 0.2s;">
+                <p class="serif" style="font-size: 1.5rem; line-height: 1.6; color: var(--gold-light);">
+                    "Dedicated to conducting my duties consciously in highly professional, skill-oriented environments—where creative capabilities are pushed to their absolute limits and brought to force.".
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Results Banner -->
+    <div class="results-banner reveal">
+        <h2 class="serif" style="font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; margin-bottom: 1.5rem; line-height: 1;">What You Get</h2>
+        <p style="font-size: 1.3rem; font-weight: 500; max-width: 900px; margin: 0 auto; letter-spacing: 2px; text-transform: uppercase;">
+            Stunning Visuals That Capture Attention. Strategic Marketing That Drives Leads. An Unfair Advantage For Your Brand.
+        </p>
+    </div>
+
+    <section class="container" id="work">
+        <div class="section-header reveal">
+            <span>02</span>
+            <h2>Selected Works</h2>
+        </div>
+        <div class="gallery-grid">
+            <!-- Project 1 -->
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1620061559869-f1fb40f7d54b?q=80&w=2564&auto=format&fit=crop" alt="Cinematic Production">
+                <div class="gallery-overlay">
+                    <h3>Cinematic Production</h3>
+                    <p>High-End 4K Title Reveals & 3D Typography</p>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="gallery-item reveal" style="transition-delay: 0.1s;">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop" alt="Brand Architecture">
+                <div class="gallery-overlay">
+                    <h3>SAMVIDH 2025</h3>
+                    <p>State-Level Fest Digital Promotion & Visual Identity.</p>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="gallery-item reveal" style="transition-delay: 0.2s;">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" alt="Lead Generation">
+                <div class="gallery-overlay">
+                    <h3>Strategic Marketing</h3>
+                    <p>SEO & Data-Driven Lead Generation Assets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="expertise">
+        <div class="section-header reveal">
+            <span>03</span>
+            <h2>Core Arsenal</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-card reveal">
+                <h3>Brand Authority</h3>
+                <p>Your brand will look expensive and trustworthy, utilizing expert Adobe Photoshop design for striking promotional materials and cohesive event branding..</p>
+            </div>
+            <div class="bento-card reveal" style="transition-delay: 0.1s;">
+                <h3>High-Impact Engagement</h3>
+                <p>Receive high-end 4K title reveals and dynamic event announcements engineered through advanced Adobe Premiere Pro production. to instantly capture audience attention.</p>
+            </div>
+            <div class="bento-card reveal" style="transition-delay: 0.2s;">
+                <h3>Measurable Growth</h3>
+                <p>Get marketing campaigns backed by hard data, navigating Google Analytics and Semrush to monitor performance and execute targeted Search Engine Optimization..</p>
+            </div>
+            <div class="bento-card reveal">
+                <h3>Persuasive Messaging</h3>
+                <p>Get targeted promotional scripts and clear brand messaging crafted perfectly for diverse audiences, from healthcare to short film contests..</p>
+            </div>
+            <div class="bento-card reveal" style="transition-delay: 0.1s;">
+                <h3>Stand-Out Concepts</h3>
+                <p>Stand out with unique visual narratives, 3D typography, and cinematic branding that translate abstract concepts into tangible results..</p>
+            </div>
+            <div class="bento-card reveal" style="transition-delay: 0.2s;">
+                <h3>Custom Solutions</h3>
+                <p>Get solutions tailored exactly to your industry, pivoting seamlessly between luxury digital aesthetics and highly technical academic presentations..</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="experience">
+        <div class="section-header reveal">
+            <span>04</span>
+            <h2>The Journey</h2>
+        </div>
+        
+        <div class="timeline-item reveal">
+            <div class="timeline-year">Present</div>
+            <div class="timeline-content">
+                <h4>Digital Marketing Strategist (BBA-DM)</h4>
+                <p>Currently advancing my academic and practical expertise at the Sanjeev College of Arts and Science (Affiliated to AKNU, Rajamahendrawaram) in Kakinada..</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+                <h4>Best Organizer Award | SAMVIDH 2K25</h4>
+                <p>Spearheaded the digital promotion strategy and visual execution for a major state-level collegiate festival hosted by Sanjeev College, taking full ownership from conceptualization to execution..</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal">
+            <div class="timeline-year">Recent</div>
+            <div class="timeline-content">
+                <h4>Corporate Marketing Intern</h4>
+                <p>Completed a specialized short-term internship at ICCS Pvt.Ltd in Kukatpally, Hyderabad, bridging academic theory with professional industry practice..</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="reveal">
+            <div class="big-footer-text serif">
+                <a href="mailto:KARTHIKPRINCEONE@GMAIL.COM">Start a Project.</a>
+            </div>
+        </div>
+        <div class="footer-details">
+            <div>© 2026 KARTHIK NETHALA.</div>
+            <div>Do.No:65-2-10, Devinilayam, Kakinada, 533003.</div>
+            <div>+91 8247553115.</div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Check if the device has a fine pointer (mouse) before running cursor logic
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            window.addEventListener('mousemove', function(e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            const links = document.querySelectorAll('a, .bento-card, .gallery-item');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                });
+                link.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                });
+            });
+        }
+
+        // High-Performance Scroll Reveal using IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Triggers when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Stop observing once revealed
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Force hero to reveal immediately on load
+        setTimeout(() => {
+            const hero = document.querySelector('.hero.reveal');
+            if (hero) hero.classList.add('active');
+        }, 100);
+    </script>
+</body>
+</html>
