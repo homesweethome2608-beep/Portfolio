@@ -67,28 +67,46 @@
         .objective-box::before { content: '"'; font-family: 'Bodoni Moda', serif; font-size: clamp(5rem, 10vw, 8rem); color: rgba(212, 175, 55, 0.1); position: absolute; top: -15px; left: 15px; }
         .objective-box p { font-size: clamp(1.1rem, 2.5vw, 1.5rem); line-height: 1.6; color: var(--gold-light); }
 
-        /* --- "WHAT YOU GET" BANNER WITH LOGOS --- */
+        /* --- "WHAT YOU GET" BANNER WITH ANIMATED LOGOS --- */
         .results-banner { background-color: var(--gold-primary); color: var(--bg-dark); padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 2rem); text-align: center; margin: clamp(2rem, 5vw, 4rem) 0; position: relative; overflow: hidden; }
         .results-banner h2 { font-size: clamp(2.5rem, 6vw, 4rem); text-transform: uppercase; margin-bottom: 1rem; line-height: 1; }
         .results-banner p.main-promise { font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 500; max-width: 900px; margin: 0 auto 1.5rem auto; letter-spacing: 1px; text-transform: uppercase; }
         .results-banner p.software-pitch { font-size: clamp(0.85rem, 2vw, 1rem); font-weight: 600; font-family: 'Inter', sans-serif; color: #fff; background: rgba(0,0,0,0.8); padding: 0.8rem 1.5rem; border-radius: 50px; display: inline-block; margin-bottom: 3rem; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.2); }
         
-        /* Engaging Tool Logos */
+        /* Engaging Tool Logos with Auto-Colorize Wave */
         .software-logos { display: flex; justify-content: center; align-items: center; gap: clamp(1rem, 4vw, 3rem); flex-wrap: wrap; }
-        .logo-wrapper { width: 80px; height: 80px; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: float 6s ease-in-out infinite; border: 1px solid rgba(255,255,255,0.1); }
+        
+        .logo-wrapper { width: 80px; height: 80px; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.1); animation: float 6s ease-in-out infinite; }
+        
+        /* Stagger the floating animation */
+        .logo-wrapper:nth-child(1) { animation-delay: 0s; }
         .logo-wrapper:nth-child(2) { animation-delay: 1s; }
         .logo-wrapper:nth-child(3) { animation-delay: 2s; }
         .logo-wrapper:nth-child(4) { animation-delay: 3s; }
         .logo-wrapper:nth-child(5) { animation-delay: 4s; }
-        .logo-wrapper img { width: 45px; height: 45px; object-fit: contain; filter: grayscale(100%) brightness(0.2); transition: filter 0.4s ease, transform 0.4s ease; }
+        
+        .logo-wrapper img { width: 45px; height: 45px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transition: filter 0.4s ease, transform 0.4s ease; animation: colorPulse 10s infinite; }
+        
+        /* Stagger the auto-colorize animation to create a sweeping wave effect */
+        .logo-wrapper:nth-child(1) img { animation-delay: 0s; }
+        .logo-wrapper:nth-child(2) img { animation-delay: 2s; }
+        .logo-wrapper:nth-child(3) img { animation-delay: 4s; }
+        .logo-wrapper:nth-child(4) img { animation-delay: 6s; }
+        .logo-wrapper:nth-child(5) img { animation-delay: 8s; }
         
         .logo-wrapper:hover { transform: scale(1.15) translateY(-10px); background: var(--bg-dark); border: 2px solid var(--gold-light); }
-        .logo-wrapper:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
+        .logo-wrapper:hover img { animation: none; filter: grayscale(0%) brightness(1); transform: scale(1.2); }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        }
+
+        /* The Auto-Colorize Keyframe */
+        @keyframes colorPulse {
+            0%, 100% { filter: grayscale(100%) brightness(0.3); transform: scale(1); }
+            10%, 30% { filter: grayscale(0%) brightness(1); transform: scale(1.15); }
+            40% { filter: grayscale(100%) brightness(0.3); transform: scale(1); }
         }
 
         /* --- TROPHY ROOM CAROUSEL --- */
@@ -160,7 +178,7 @@
 
     <nav>
         <div class="logo serif">K.N.</div>
-        <div style="letter-spacing: 2px; font-size: clamp(0.7rem, 2vw, 0.9rem); text-transform: uppercase;">Based in AP, India[cite: 3]</div>
+        <div style="letter-spacing: 2px; font-size: clamp(0.7rem, 2vw, 0.9rem); text-transform: uppercase;">Based in AP, India</div>
     </nav>
 
     <header class="hero reveal">
@@ -183,11 +201,11 @@
         <div class="about-grid">
             <div class="about-text reveal">
                 I bridge the gap between cinematic artistry and hard data. When you work with me, <strong>you get more than just beautiful design—you get a strategic asset built to perform.</strong><br><br>
-                Whether it is executing high-end <strong>4K video editing and 3D typography</strong> or structuring robust <strong>SEO and lead-generation campaigns</strong>[cite: 3], my focus is entirely on your growth. You get a brand that commands attention, messaging that builds trust, and data-driven marketing that converts your audience into loyal customers.
+                Whether it is executing high-end <strong>4K video editing and 3D typography</strong> or structuring robust <strong>SEO and lead-generation campaigns</strong>, my focus is entirely on your growth. You get a brand that commands attention, messaging that builds trust, and data-driven marketing that converts your audience into loyal customers.
             </div>
             <div class="objective-box reveal" style="transition-delay: 0.2s;">
                 <p class="serif">
-                    "Dedicated to conducting my duties consciously in highly professional, skill-oriented environments—where creative capabilities are pushed to their absolute limits and brought to force."[cite: 3]
+                    "Dedicated to conducting my duties consciously in highly professional, skill-oriented environments—where creative capabilities are pushed to their absolute limits and brought to force."
                 </p>
             </div>
         </div>
@@ -242,7 +260,7 @@
                     </div>
                     <div class="cert-info">
                         <h3>Best Organizer Award</h3>
-                        <p>SAMVIDH 2K25 Fest[cite: 3]</p>
+                        <p>SAMVIDH 2K25 Fest</p>
                     </div>
                 </div>
 
@@ -253,7 +271,7 @@
                     </div>
                     <div class="cert-info">
                         <h3>Corporate Internship</h3>
-                        <p>ICCS Pvt.Ltd | Hyderabad[cite: 3]</p>
+                        <p>ICCS Pvt.Ltd | Hyderabad</p>
                     </div>
                 </div>
 
@@ -275,7 +293,7 @@
                     </div>
                     <div class="cert-info">
                         <h3>Digital Marketing</h3>
-                        <p>BBA-DM Academic Excellence[cite: 3]</p>
+                        <p>BBA-DM Academic Excellence</p>
                     </div>
                 </div>
 
@@ -302,14 +320,14 @@
                 <div class="intern-img" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2670&auto=format&fit=crop');"></div>
                 <div class="intern-content">
                     <h3>Corporate Marketing</h3>
-                    <div class="company">ICCS Pvt.Ltd | Hyderabad[cite: 3]</div>
-                    <p>Successfully completed a short-term corporate internship, effectively bridging the gap between academic theory and real-world professional industry practice. Gained hands-on experience navigating high-stakes operational environments[cite: 3].</p>
+                    <div class="company">ICCS Pvt.Ltd | Hyderabad</div>
+                    <p>Successfully completed a short-term corporate internship, effectively bridging the gap between academic theory and real-world professional industry practice. Gained hands-on experience navigating high-stakes operational environments.</p>
                 </div>
             </div>
 
             <!-- Internship 2: Power BI -->
             <div class="intern-card reveal" style="transition-delay: 0.1s;">
-                <div class="intern-img" style="background-image: url('cinematic.jpg');"></div>
+                <div class="intern-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop');"></div>
                 <div class="intern-content">
                     <h3>Power BI Data Analyst</h3>
                     <div class="company">Glossary Soft Tech Pvt Ltd | Online</div>
@@ -328,19 +346,19 @@
         <div class="bento-grid">
             <div class="bento-card reveal">
                 <h3>Brand Authority</h3>
-                <p>Your brand will look expensive and trustworthy, utilizing expert Adobe Photoshop design for striking promotional materials and cohesive event branding[cite: 3].</p>
+                <p>Your brand will look expensive and trustworthy, utilizing expert Adobe Photoshop design for striking promotional materials and cohesive event branding.</p>
             </div>
             <div class="bento-card reveal" style="transition-delay: 0.1s;">
                 <h3>High-Impact Engagement</h3>
-                <p>Receive high-end 4K title reveals and dynamic event announcements engineered through advanced Adobe Premiere Pro production[cite: 3] to instantly capture audience attention.</p>
+                <p>Receive high-end 4K title reveals and dynamic event announcements engineered through advanced Adobe Premiere Pro production to instantly capture audience attention.</p>
             </div>
             <div class="bento-card reveal" style="transition-delay: 0.2s;">
                 <h3>Measurable Growth</h3>
-                <p>Get marketing campaigns backed by hard data, navigating Google Analytics and Semrush to monitor performance and execute targeted Search Engine Optimization[cite: 3].</p>
+                <p>Get marketing campaigns backed by hard data, navigating Google Analytics and Semrush to monitor performance and execute targeted Search Engine Optimization.</p>
             </div>
             <div class="bento-card reveal">
                 <h3>Persuasive Messaging</h3>
-                <p>Get targeted promotional scripts and clear brand messaging crafted perfectly for diverse audiences, from healthcare to short film contests[cite: 3].</p>
+                <p>Get targeted promotional scripts and clear brand messaging crafted perfectly for diverse audiences, from healthcare to short film contests.</p>
             </div>
         </div>
     </section>
@@ -356,7 +374,7 @@
             <div class="timeline-year">Present</div>
             <div class="timeline-content">
                 <h4>Digital Marketing Strategist</h4>
-                <p>Currently advancing my academic and practical expertise at the Sanjeev College of Arts and Science (Affiliated to AKNU, Rajamahendrawaram) in Kakinada[cite: 3].</p>
+                <p>Currently advancing my academic and practical expertise at the Sanjeev College of Arts and Science (Affiliated to AKNU, Rajamahendrawaram) in Kakinada.</p>
             </div>
         </div>
 
@@ -372,7 +390,7 @@
             <div class="timeline-year">2025</div>
             <div class="timeline-content">
                 <h4>Best Organizer Award | SAMVIDH 2K25</h4>
-                <p>Spearheaded the digital promotion strategy and visual execution for a major state-level collegiate festival hosted by Sanjeev College, taking full ownership from conceptualization to execution[cite: 3].</p>
+                <p>Spearheaded the digital promotion strategy and visual execution for a major state-level collegiate festival hosted by Sanjeev College, taking full ownership from conceptualization to execution.</p>
             </div>
         </div>
 
@@ -380,7 +398,7 @@
             <div class="timeline-year">Recent</div>
             <div class="timeline-content">
                 <h4>Corporate Marketing Intern</h4>
-                <p>Completed a specialized short-term internship at ICCS Pvt.Ltd in Kukatpally, Hyderabad, bridging academic theory with professional industry practice[cite: 3].</p>
+                <p>Completed a specialized short-term internship at ICCS Pvt.Ltd in Kukatpally, Hyderabad, bridging academic theory with professional industry practice.</p>
             </div>
         </div>
         
@@ -388,7 +406,7 @@
             <div class="timeline-year">2019-21</div>
             <div class="timeline-content">
                 <h4>Intermediate (BIPC)</h4>
-                <p>Graduated with an 86% distinction from Sri Chaitanya Junior College, building a foundation in analytical problem solving[cite: 3].</p>
+                <p>Graduated with an 86% distinction from Sri Chaitanya Junior College, building a foundation in analytical problem solving.</p>
             </div>
         </div>
     </section>
@@ -400,9 +418,9 @@
             </div>
         </div>
         <div class="footer-details">
-            <div>© 2026 KARTHIK NETHALA[cite: 3].</div>
-            <div>Do.No:65-2-10, Devinilayam, Kakinada, 533003[cite: 3].</div>
-            <div>+91 8247553115[cite: 3].</div>
+            <div>© 2026 KARTHIK NETHALA.</div>
+            <div>Do.No:65-2-10, Devinilayam, Kakinada, 533003.</div>
+            <div>+91 8247553115.</div>
         </div>
     </footer>
 
