@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="Karthik Nethala is a Digital Marketing Strategist and Visual Storyteller based in AP, India, specializing in cinematic video, SEO, and brand architecture.">
     <title>Karthik Nethala | Premium Creative Portfolio</title>
     <style>
@@ -18,281 +18,138 @@
             --text-muted: #888888;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            background-color: var(--bg-dark); color: var(--text-main);
+            font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth;
         }
 
-        body.modal-open {
-            overflow: hidden; /* Prevents background scrolling when modal is open */
-        }
-
-        /* Custom Cursor - Only on devices with a mouse */
+        /* Custom Cursor */
         @media (pointer: fine) {
             * { cursor: none; }
-            .cursor-dot {
-                width: 8px; height: 8px;
-                background-color: var(--gold-primary);
-                border-radius: 50%;
-                position: fixed; top: 0; left: 0;
-                transform: translate(-50%, -50%);
-                pointer-events: none; z-index: 9999;
-                transition: width 0.2s, height 0.2s;
-            }
-            .cursor-outline {
-                width: 40px; height: 40px;
-                border: 1px solid rgba(212, 175, 55, 0.5);
-                border-radius: 50%;
-                position: fixed; top: 0; left: 0;
-                transform: translate(-50%, -50%);
-                pointer-events: none; z-index: 9998;
-                transition: 0.1s ease-out;
-            }
+            .cursor-dot { width: 8px; height: 8px; background-color: var(--gold-primary); border-radius: 50%; position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; transition: width 0.2s, height 0.2s; }
+            .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 50%; position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9998; transition: 0.1s ease-out; }
         }
+        @media (pointer: coarse) { .cursor-dot, .cursor-outline { display: none !important; } }
 
-        @media (pointer: coarse) {
-            .cursor-dot, .cursor-outline { display: none !important; }
-        }
+        h1, h2, h3, h4, .serif { font-family: 'Bodoni Moda', serif; font-weight: 400; }
+        .gold-gradient-text { background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
 
-        h1, h2, h3, h4, .serif {
-            font-family: 'Bodoni Moda', serif;
-            font-weight: 400;
-        }
-
-        .gold-gradient-text {
-            background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1; transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Navigation */
-        nav {
-            position: fixed; top: 0; width: 100%;
-            padding: 2rem 4rem; display: flex;
-            justify-content: space-between; align-items: center;
-            z-index: 100; mix-blend-mode: difference;
-        }
+        nav { position: fixed; top: 0; width: 100%; padding: clamp(1rem, 3vh, 2rem) clamp(1.5rem, 5vw, 4rem); display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; }
+        .logo { font-size: clamp(1.2rem, 3vw, 1.5rem); letter-spacing: 2px; text-transform: uppercase; }
 
-        .logo { font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; }
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; background: radial-gradient(circle at 50% 50%, #111 0%, #030303 100%); padding: 0 1.5rem; }
+        .hero h1 { font-size: clamp(3.5rem, 12vw, 9rem); line-height: 0.9; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: clamp(0.9rem, 2.5vw, 1.2rem); text-transform: uppercase; letter-spacing: clamp(3px, 1vw, 8px); color: var(--gold-primary); margin-top: 2rem; font-weight: 300; }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            position: relative;
-            background: radial-gradient(circle at 50% 50%, #111 0%, #030303 100%);
-        }
-        .hero h1 { font-size: clamp(4rem, 10vw, 9rem); line-height: 0.9; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 1rem; }
-        .hero-subtitle { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 8px; color: var(--gold-primary); margin-top: 2rem; font-weight: 300; }
-
-        /* Marquee Strip */
-        .marquee-container { width: 100%; background: var(--gold-primary); color: var(--bg-dark); padding: 1.5rem 0; overflow: hidden; white-space: nowrap; display: flex; align-items: center; }
-        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; font-family: 'Bodoni Moda', serif; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        /* Marquee */
+        .marquee-container { width: 100%; background: var(--gold-primary); color: var(--bg-dark); padding: clamp(1rem, 2vw, 1.5rem) 0; overflow: hidden; white-space: nowrap; display: flex; align-items: center; }
+        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; font-family: 'Bodoni Moda', serif; font-size: clamp(1rem, 2.5vw, 1.5rem); text-transform: uppercase; letter-spacing: 2px; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Containers */
-        .container { max-width: 1400px; margin: 0 auto; padding: 8rem 2rem; }
-        .section-header { display: flex; align-items: flex-start; margin-bottom: 5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2rem; }
-        .section-header span { font-size: 1rem; color: var(--gold-primary); margin-right: 2rem; }
-        .section-header h2 { font-size: clamp(3rem, 5vw, 5rem); text-transform: uppercase; }
+        /* General Layout */
+        .container { max-width: 1400px; margin: 0 auto; padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 5vw, 4rem); }
+        .section-header { display: flex; align-items: flex-start; margin-bottom: clamp(3rem, 6vw, 5rem); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; }
+        .section-header span { font-size: clamp(0.9rem, 2vw, 1rem); color: var(--gold-primary); margin-right: 1.5rem; margin-top: 5px; }
+        .section-header h2 { font-size: clamp(2.5rem, 6vw, 5rem); text-transform: uppercase; line-height: 1; }
 
         /* About Section */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-        .about-text { font-size: 1.3rem; line-height: 1.8; font-weight: 300; color: var(--text-muted); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
+        .about-text { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.8; font-weight: 300; color: var(--text-muted); }
         .about-text strong { color: var(--text-main); font-weight: 500; }
-        .objective-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.2); padding: 4rem 3rem; backdrop-filter: blur(10px); position: relative; display: flex; align-items: center; }
-        .objective-box::before { content: '"'; font-family: 'Bodoni Moda', serif; font-size: 8rem; color: rgba(212, 175, 55, 0.1); position: absolute; top: -20px; left: 20px; }
+        .objective-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.2); padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem); backdrop-filter: blur(10px); position: relative; display: flex; align-items: center; }
+        .objective-box::before { content: '"'; font-family: 'Bodoni Moda', serif; font-size: clamp(5rem, 10vw, 8rem); color: rgba(212, 175, 55, 0.1); position: absolute; top: -15px; left: 15px; }
+        .objective-box p { font-size: clamp(1.1rem, 2.5vw, 1.5rem); line-height: 1.6; color: var(--gold-light); }
 
-        /* Client Results Banner */
-        .results-banner { background-color: var(--gold-primary); color: var(--bg-dark); padding: 6rem 2rem; text-align: center; margin: 4rem 0; }
-
-        /* Visual Gallery */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
-        .gallery-item { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); background: var(--bg-card); cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; opacity: 0.7; }
-        .gallery-item:hover img { transform: scale(1.05); opacity: 0.3; }
-        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; padding: 2rem; text-align: center; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay h3 { color: var(--gold-primary); font-size: 2rem; margin-bottom: 0.5rem; }
-        .gallery-overlay p { font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; }
+        /* --- "WHAT YOU GET" BANNER WITH LOGOS --- */
+        .results-banner { background-color: var(--gold-primary); color: var(--bg-dark); padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 2rem); text-align: center; margin: clamp(2rem, 5vw, 4rem) 0; position: relative; overflow: hidden; }
+        .results-banner h2 { font-size: clamp(2.5rem, 6vw, 4rem); text-transform: uppercase; margin-bottom: 1rem; line-height: 1; }
+        .results-banner p.main-promise { font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 500; max-width: 900px; margin: 0 auto 1.5rem auto; letter-spacing: 1px; text-transform: uppercase; }
+        .results-banner p.software-pitch { font-size: clamp(0.85rem, 2vw, 1rem); font-weight: 600; font-family: 'Inter', sans-serif; color: #fff; background: rgba(0,0,0,0.8); padding: 0.8rem 1.5rem; border-radius: 50px; display: inline-block; margin-bottom: 3rem; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.2); }
         
-        /* CTA Button inside Gallery */
-        .play-cta {
-            padding: 0.8rem 1.5rem;
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        .gallery-item:hover .play-cta { background: var(--gold-primary); color: var(--bg-dark); }
-
-        /* --- PROJECT MODAL POPUP (NEW) --- */
-        .project-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
-            z-index: 1000; display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-        }
-
-        .project-modal.active { opacity: 1; pointer-events: auto; }
-
-        .modal-content-wrapper {
-            position: relative;
-            width: 95%;
-            max-width: 1200px;
-            height: 85vh;
-            background: #0a0a0a;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.15);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transform: scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .project-modal.active .modal-content-wrapper { transform: scale(1); }
-
-        .close-modal {
-            position: absolute; top: 15px; right: 20px;
-            background: rgba(0,0,0,0.5); border: 1px solid var(--gold-primary);
-            color: var(--gold-primary); width: 40px; height: 40px;
-            border-radius: 50%; font-size: 1.5rem; cursor: pointer;
-            transition: all 0.3s ease; z-index: 10;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .close-modal:hover { background: var(--gold-primary); color: #000; transform: rotate(90deg); }
-
-        .modal-body {
-            flex: 1;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        /* View 1: Main Feature/Certificate View */
-        .modal-view-1 {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; transition: opacity 0.4s ease;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-        }
-        .modal-view-1.hidden { opacity: 0; pointer-events: none; z-index: -1; }
-
-        .modal-hero-image {
-            flex: 1.5;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        /* Fade edge to black */
-        .modal-hero-image::after {
-            content: ''; position: absolute; top: 0; right: 0; width: 30%; height: 100%;
-            background: linear-gradient(to right, transparent, #0a0a0a);
-        }
-
-        .modal-info-panel {
-            flex: 1;
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .modal-info-panel h2 { font-family: 'Bodoni Moda', serif; font-size: 3.5rem; color: var(--gold-primary); margin-bottom: 1rem; line-height: 1; }
-        .modal-info-panel h4 { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; color: #666; margin-bottom: 2rem; }
-        .modal-info-panel p { color: var(--text-muted); font-weight: 300; line-height: 1.8; margin-bottom: 3rem; font-size: 1.1rem; }
+        /* Engaging Tool Logos */
+        .software-logos { display: flex; justify-content: center; align-items: center; gap: clamp(1rem, 4vw, 3rem); flex-wrap: wrap; }
+        .logo-wrapper { width: 80px; height: 80px; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: float 6s ease-in-out infinite; border: 1px solid rgba(255,255,255,0.1); }
+        .logo-wrapper:nth-child(2) { animation-delay: 1s; }
+        .logo-wrapper:nth-child(3) { animation-delay: 2s; }
+        .logo-wrapper:nth-child(4) { animation-delay: 3s; }
+        .logo-wrapper:nth-child(5) { animation-delay: 4s; }
+        .logo-wrapper img { width: 45px; height: 45px; object-fit: contain; filter: grayscale(100%) brightness(0.2); transition: filter 0.4s ease, transform 0.4s ease; }
         
-        .btn-contribution {
-            align-self: flex-start; padding: 1rem 2.5rem;
-            background: transparent; border: 1px solid var(--gold-primary);
-            color: var(--gold-primary); text-transform: uppercase; letter-spacing: 2px;
-            font-family: 'Inter', sans-serif; font-size: 0.9rem; transition: all 0.3s;
-        }
-        .btn-contribution:hover { background: var(--gold-primary); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+        .logo-wrapper:hover { transform: scale(1.15) translateY(-10px); background: var(--bg-dark); border: 2px solid var(--gold-light); }
+        .logo-wrapper:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
 
-        /* View 2: Contributions Gallery View */
-        .modal-view-2 {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; background: #0a0a0a;
-            transition: opacity 0.4s ease; overflow-y: auto; padding: 3rem 4rem;
-        }
-        .modal-view-2.hidden { opacity: 0; pointer-events: none; z-index: -1; }
-
-        .modal-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
-        .btn-back { background: none; border: none; color: var(--gold-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
-        .btn-back:hover { color: #fff; }
-
-        .contrib-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            padding-bottom: 2rem;
-        }
-        .contrib-item {
-            width: 100%; aspect-ratio: 1/1;
-            object-fit: cover; border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.4s ease, border-color 0.4s ease;
-        }
-        .contrib-item:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-
-        /* Mobile Adjustments for Modal */
-        @media (max-width: 900px) {
-            .modal-view-1 { flex-direction: column; }
-            .modal-hero-image { flex: 1; min-height: 250px; }
-            .modal-hero-image::after { background: linear-gradient(to bottom, transparent, #0a0a0a); width: 100%; height: 30%; top: auto; bottom: 0; }
-            .modal-info-panel { flex: none; padding: 2rem; }
-            .modal-info-panel h2 { font-size: 2.5rem; }
-            .modal-view-2 { padding: 2rem; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* Bento Grid */
-        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .bento-card { background: var(--bg-card); padding: 3rem 2rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s ease; position: relative; overflow: hidden; }
-        .bento-card:hover { border-color: var(--gold-primary); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.05); }
-        .bento-card h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-main); }
-        .bento-card p { color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+        /* --- TROPHY ROOM CAROUSEL --- */
+        .carousel-wrapper { position: relative; width: 100%; margin-top: 2rem; }
+        .carousel-track { display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 2rem; -ms-overflow-style: none; scrollbar-width: none; }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        
+        .cert-card { flex: 0 0 calc(100% - 2rem); scroll-snap-align: center; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; transition: all 0.4s ease; }
+        @media(min-width: 768px) { .cert-card { flex: 0 0 calc(50% - 1rem); } }
+        @media(min-width: 1024px) { .cert-card { flex: 0 0 calc(33.333% - 1.33rem); } }
+        
+        .cert-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); }
+        .cert-image { width: 100%; aspect-ratio: 4/3; background: #111; border-radius: 4px; overflow: hidden; position: relative; margin-bottom: 1.5rem; border: 2px solid rgba(212, 175, 55, 0.2); }
+        .cert-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.6s ease; filter: grayscale(100%) contrast(1.2); }
+        .cert-card:hover .cert-image img { transform: scale(1.08); filter: grayscale(0%) contrast(1.1); }
+        
+        .cert-info h3 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem; font-family: 'Bodoni Moda', serif; }
+        .cert-info p { font-size: 0.85rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Timeline */
-        .timeline-item { display: grid; grid-template-columns: 1fr 3fr; gap: 2rem; padding: 3.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
-        .timeline-item:hover { padding-left: 2rem; background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%); }
-        .timeline-year { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; color: var(--gold-primary); }
-        .timeline-content h4 { font-size: 2.2rem; margin-bottom: 0.8rem; color: var(--text-main); }
-        .timeline-content p { color: var(--text-muted); font-weight: 300; font-size: 1.1rem; line-height: 1.6; }
+        /* Carousel Navigation Buttons */
+        .carousel-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+        .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary); font-size: 1.5rem; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; }
+        .nav-btn:hover { background: var(--gold-primary); color: var(--bg-dark); transform: scale(1.1); }
+
+        /* --- CORPORATE INTERNSHIPS GRID --- */
+        .internships-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 2rem; margin-top: 2rem; }
+        .intern-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; transition: transform 0.4s ease, border-color 0.4s ease; display: flex; flex-direction: column; }
+        .intern-card:hover { transform: translateY(-10px); border-color: var(--gold-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .intern-img { height: 250px; background-size: cover; background-position: center; filter: grayscale(80%); transition: filter 0.5s ease; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .intern-card:hover .intern-img { filter: grayscale(0%); }
+        .intern-content { padding: clamp(1.5rem, 3vw, 2.5rem); flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .intern-content h3 { font-family: 'Bodoni Moda', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--gold-primary); margin-bottom: 0.5rem; line-height: 1.1; }
+        .intern-content .company { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem; }
+        .intern-content p { color: var(--text-muted); font-weight: 300; line-height: 1.7; font-size: clamp(0.95rem, 2vw, 1.05rem); }
+
+        /* Bento Grid (Core Arsenal) */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
+        .bento-card { background: var(--bg-card); padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem); border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s ease; }
+        .bento-card:hover { border-color: var(--gold-primary); transform: translateY(-10px); }
+        .bento-card h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; color: var(--text-main); }
+        .bento-card p { color: var(--text-muted); line-height: 1.7; font-weight: 300; font-size: clamp(0.95rem, 2vw, 1rem); }
+
+        /* Timeline (The Journey) */
+        .timeline-item { display: grid; grid-template-columns: 1fr 3fr; gap: 2rem; padding: clamp(2rem, 4vw, 3.5rem) 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
+        .timeline-item:hover { padding-left: 1rem; background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%); }
+        .timeline-year { font-family: 'Bodoni Moda', serif; font-size: clamp(1.4rem, 3vw, 1.8rem); color: var(--gold-primary); }
+        .timeline-content h4 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 0.5rem; color: var(--text-main); line-height: 1.2; }
+        .timeline-content p { color: var(--text-muted); font-weight: 300; font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.6; }
 
         /* Footer */
-        footer { padding: 8rem 2rem 2rem; text-align: center; background: #000; }
-        .big-footer-text { font-size: clamp(3rem, 10vw, 10rem); line-height: 0.9; margin-bottom: 4rem; }
+        footer { padding: clamp(4rem, 10vw, 8rem) 2rem 2rem; text-align: center; background: #000; }
+        .big-footer-text { font-size: clamp(2.5rem, 10vw, 10rem); line-height: 0.9; margin-bottom: clamp(2rem, 5vw, 4rem); }
         .big-footer-text a { color: var(--text-main); text-decoration: none; transition: color 0.3s; }
         .big-footer-text a:hover { color: var(--gold-primary); }
-        .footer-details { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .footer-details { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; flex-wrap: wrap; gap: 1rem; }
 
         @media (max-width: 900px) {
-            .about-grid, .gallery-grid, .bento-grid { grid-template-columns: 1fr; }
-            .timeline-item { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
-            nav { padding: 1.5rem; }
-            .footer-details { flex-direction: column; gap: 1rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .timeline-item:hover { padding-left: 0; background: none; }
+            .footer-details { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
@@ -301,18 +158,9 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <div class="project-modal" id="projectModal">
-        <div class="modal-content-wrapper">
-            <button class="close-modal" id="closeModal">&times;</button>
-            
-            <div class="modal-body" id="dynamicModalBody">
-                </div>
-        </div>
-    </div>
-
     <nav>
         <div class="logo serif">K.N.</div>
-        <div style="letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase;">Based in AP, India</div>
+        <div style="letter-spacing: 2px; font-size: clamp(0.7rem, 2vw, 0.9rem); text-transform: uppercase;">Based in AP, India[cite: 3]</div>
     </nav>
 
     <header class="hero reveal">
@@ -326,6 +174,7 @@
         </div>
     </div>
 
+    <!-- 01 THE VISION -->
     <section class="container" id="about">
         <div class="section-header reveal">
             <span>01</span>
@@ -334,104 +183,188 @@
         <div class="about-grid">
             <div class="about-text reveal">
                 I bridge the gap between cinematic artistry and hard data. When you work with me, <strong>you get more than just beautiful design—you get a strategic asset built to perform.</strong><br><br>
-                Whether it is executing high-end <strong>4K video editing and 3D typography</strong> or structuring robust <strong>SEO and lead-generation campaigns</strong>, my focus is entirely on your growth. You get a brand that commands attention, messaging that builds trust, and data-driven marketing that converts your audience into loyal customers.
+                Whether it is executing high-end <strong>4K video editing and 3D typography</strong> or structuring robust <strong>SEO and lead-generation campaigns</strong>[cite: 3], my focus is entirely on your growth. You get a brand that commands attention, messaging that builds trust, and data-driven marketing that converts your audience into loyal customers.
             </div>
             <div class="objective-box reveal" style="transition-delay: 0.2s;">
-                <p class="serif" style="font-size: 1.5rem; line-height: 1.6; color: var(--gold-light);">
-                    "Dedicated to conducting my duties consciously in highly professional, skill-oriented environments—where creative capabilities are pushed to their absolute limits and brought to force."
+                <p class="serif">
+                    "Dedicated to conducting my duties consciously in highly professional, skill-oriented environments—where creative capabilities are pushed to their absolute limits and brought to force."[cite: 3]
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- WHAT YOU GET BANNER (WITH LOGOS) -->
     <div class="results-banner reveal">
-        <h2 class="serif" style="font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; margin-bottom: 1.5rem; line-height: 1;">What You Get</h2>
-        <p style="font-size: 1.3rem; font-weight: 500; max-width: 900px; margin: 0 auto; letter-spacing: 2px; text-transform: uppercase;">
-            Stunning Visuals That Capture Attention. Strategic Marketing That Drives Leads. An Unfair Advantage For Your Brand.
-        </p>
+        <h2 class="serif">What You Get</h2>
+        <p class="main-promise">Stunning Visuals That Capture Attention. Strategic Marketing That Drives Leads. An Unfair Advantage For Your Brand.</p>
+        
+        <p class="software-pitch">The tools I use to guarantee a buttery, seamless, and premium output:</p>
+
+        <!-- Engaging Software Logos -->
+        <div class="software-logos">
+            <!-- Premiere Pro -->
+            <div class="logo-wrapper" title="Adobe Premiere Pro">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere Pro">
+            </div>
+            <!-- After Effects -->
+            <div class="logo-wrapper" title="Adobe After Effects">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="After Effects">
+            </div>
+            <!-- Photoshop -->
+            <div class="logo-wrapper" title="Adobe Photoshop">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop">
+            </div>
+            <!-- CapCut -->
+            <div class="logo-wrapper" title="CapCut">
+                <img src="https://img.icons8.com/color/512/capcut.png" alt="CapCut">
+            </div>
+            <!-- Power BI -->
+            <div class="logo-wrapper" title="Power BI">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
+            </div>
+        </div>
     </div>
 
-    <section class="container" id="work">
+    <!-- 02 TROPHY ROOM (CAROUSEL) -->
+    <section class="container" id="trophy-room">
         <div class="section-header reveal">
             <span>02</span>
-            <h2>Selected Works</h2>
+            <h2>Trophy Room</h2>
         </div>
-        <div class="gallery-grid">
-            
-            <div class="gallery-item reveal trigger-modal" data-id="1">
-                <img src="https://images.unsplash.com/photo-1530103862676-de8892b07f82?q=80&w=2670&auto=format&fit=crop" alt="Cinematic Production Thumbnail">
-                <div class="gallery-overlay">
-                    <h3>Cinematic Production</h3>
-                    <p>High-End Event Production</p>
-                    <div class="play-cta">Explore Project</div>
+        
+        <div class="carousel-wrapper reveal">
+            <div class="carousel-track" id="certificateTrack">
+                
+                <!-- Certificate 1 -->
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="https://images.unsplash.com/photo-1578269174936-2709b6aeb913?q=80&w=2671&auto=format&fit=crop" alt="Best Organizer Certificate JPG">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Best Organizer Award</h3>
+                        <p>SAMVIDH 2K25 Fest[cite: 3]</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="gallery-item reveal trigger-modal" data-id="2" style="transition-delay: 0.1s;">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop" alt="Brand Architecture Thumbnail">
-                <div class="gallery-overlay">
-                    <h3>SAMVIDH 2025</h3>
-                    <p>State-Level Fest Digital Promotion</p>
-                    <div class="play-cta">Explore Project</div>
+
+                <!-- Certificate 2 -->
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2574&auto=format&fit=crop" alt="Internship Certificate JPG">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Corporate Internship</h3>
+                        <p>ICCS Pvt.Ltd | Hyderabad[cite: 3]</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="gallery-item reveal trigger-modal" data-id="3" style="transition-delay: 0.2s;">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" alt="Strategic Marketing Thumbnail">
-                <div class="gallery-overlay">
-                    <h3>Strategic Marketing</h3>
-                    <p>SEO & Lead Generation Assets</p>
-                    <div class="play-cta">Explore Project</div>
+
+                <!-- Certificate 3 -->
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop" alt="Power BI Certificate JPG">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Data Visualization</h3>
+                        <p>Power BI Analytics</p>
+                    </div>
                 </div>
+
+                <!-- Certificate 4 -->
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2671&auto=format&fit=crop" alt="Digital Marketing Achievement JPG">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Digital Marketing</h3>
+                        <p>BBA-DM Academic Excellence[cite: 3]</p>
+                    </div>
+                </div>
+
             </div>
 
+            <!-- Carousel Navigation -->
+            <div class="carousel-nav">
+                <button class="nav-btn" id="prevBtn" aria-label="Previous">←</button>
+                <button class="nav-btn" id="nextBtn" aria-label="Next">→</button>
+            </div>
         </div>
     </section>
 
-    <section class="container" id="expertise">
+    <!-- 03 CORPORATE EXPERIENCE (DUAL INTERNSHIPS) -->
+    <section class="container" id="internships">
         <div class="section-header reveal">
             <span>03</span>
+            <h2>Corporate Experience</h2>
+        </div>
+        
+        <div class="internships-grid">
+            <!-- Internship 1: ICCS -->
+            <div class="intern-card reveal">
+                <div class="intern-img" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2670&auto=format&fit=crop');"></div>
+                <div class="intern-content">
+                    <h3>Corporate Marketing</h3>
+                    <div class="company">ICCS Pvt.Ltd | Hyderabad[cite: 3]</div>
+                    <p>Successfully completed a short-term corporate internship, effectively bridging the gap between academic theory and real-world professional industry practice. Gained hands-on experience navigating high-stakes operational environments[cite: 3].</p>
+                </div>
+            </div>
+
+            <!-- Internship 2: Power BI -->
+            <div class="intern-card reveal" style="transition-delay: 0.1s;">
+                <div class="intern-img" style="background-image: url('cinematic.jpg');"></div>
+                <div class="intern-content">
+                    <h3>Power BI Data Analyst</h3>
+                    <div class="company">Glossary Soft Tech Pvt Ltd | Online</div>
+                    <p>Completed an intensive 3-month online internship mastering Power BI. Focused on advanced data visualization, dynamic dashboard creation, and translating complex metrics into actionable, strategic business insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 CORE ARSENAL -->
+    <section class="container" id="expertise">
+        <div class="section-header reveal">
+            <span>04</span>
             <h2>Core Arsenal</h2>
         </div>
         <div class="bento-grid">
             <div class="bento-card reveal">
                 <h3>Brand Authority</h3>
-                <p>Your brand will look expensive and trustworthy, utilizing expert Adobe Photoshop design for striking promotional materials and cohesive event branding.</p>
+                <p>Your brand will look expensive and trustworthy, utilizing expert Adobe Photoshop design for striking promotional materials and cohesive event branding[cite: 3].</p>
             </div>
             <div class="bento-card reveal" style="transition-delay: 0.1s;">
                 <h3>High-Impact Engagement</h3>
-                <p>Receive high-end 4K title reveals and dynamic event announcements engineered through advanced Adobe Premiere Pro production to instantly capture audience attention.</p>
+                <p>Receive high-end 4K title reveals and dynamic event announcements engineered through advanced Adobe Premiere Pro production[cite: 3] to instantly capture audience attention.</p>
             </div>
             <div class="bento-card reveal" style="transition-delay: 0.2s;">
                 <h3>Measurable Growth</h3>
-                <p>Get marketing campaigns backed by hard data, navigating Google Analytics and Semrush to monitor performance and execute targeted Search Engine Optimization.</p>
+                <p>Get marketing campaigns backed by hard data, navigating Google Analytics and Semrush to monitor performance and execute targeted Search Engine Optimization[cite: 3].</p>
             </div>
             <div class="bento-card reveal">
                 <h3>Persuasive Messaging</h3>
-                <p>Get targeted promotional scripts and clear brand messaging crafted perfectly for diverse audiences, from healthcare to short film contests.</p>
-            </div>
-            <div class="bento-card reveal" style="transition-delay: 0.1s;">
-                <h3>Stand-Out Concepts</h3>
-                <p>Stand out with unique visual narratives, 3D typography, and cinematic branding that translate abstract concepts into tangible results.</p>
-            </div>
-            <div class="bento-card reveal" style="transition-delay: 0.2s;">
-                <h3>Custom Solutions</h3>
-                <p>Get solutions tailored exactly to your industry, pivoting seamlessly between luxury digital aesthetics and highly technical academic presentations.</p>
+                <p>Get targeted promotional scripts and clear brand messaging crafted perfectly for diverse audiences, from healthcare to short film contests[cite: 3].</p>
             </div>
         </div>
     </section>
 
+    <!-- 05 THE JOURNEY -->
     <section class="container" id="experience">
         <div class="section-header reveal">
-            <span>04</span>
+            <span>05</span>
             <h2>The Journey</h2>
         </div>
         
         <div class="timeline-item reveal">
             <div class="timeline-year">Present</div>
             <div class="timeline-content">
-                <h4>Digital Marketing Strategist (BBA-DM)</h4>
-                <p>Currently advancing my academic and practical expertise at the Sanjeev College of Arts and Science (Affiliated to AKNU, Rajamahendrawaram) in Kakinada.</p>
+                <h4>Digital Marketing Strategist</h4>
+                <p>Currently advancing my academic and practical expertise at the Sanjeev College of Arts and Science (Affiliated to AKNU, Rajamahendrawaram) in Kakinada[cite: 3].</p>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-content">
+                <h4>Data Analytics Specialization</h4>
+                <p>Expanded technical toolset by completing a 3-month online Power BI internship with Glossary Soft Tech Pvt Ltd, focusing on seamless data visualization.</p>
             </div>
         </div>
 
@@ -439,7 +372,7 @@
             <div class="timeline-year">2025</div>
             <div class="timeline-content">
                 <h4>Best Organizer Award | SAMVIDH 2K25</h4>
-                <p>Spearheaded the digital promotion strategy and visual execution for a major state-level collegiate festival hosted by Sanjeev College, taking full ownership from conceptualization to execution.</p>
+                <p>Spearheaded the digital promotion strategy and visual execution for a major state-level collegiate festival hosted by Sanjeev College, taking full ownership from conceptualization to execution[cite: 3].</p>
             </div>
         </div>
 
@@ -447,7 +380,15 @@
             <div class="timeline-year">Recent</div>
             <div class="timeline-content">
                 <h4>Corporate Marketing Intern</h4>
-                <p>Completed a specialized short-term internship at ICCS Pvt.Ltd in Kukatpally, Hyderabad, bridging academic theory with professional industry practice.</p>
+                <p>Completed a specialized short-term internship at ICCS Pvt.Ltd in Kukatpally, Hyderabad, bridging academic theory with professional industry practice[cite: 3].</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item reveal">
+            <div class="timeline-year">2019-21</div>
+            <div class="timeline-content">
+                <h4>Intermediate (BIPC)</h4>
+                <p>Graduated with an 86% distinction from Sri Chaitanya Junior College, building a foundation in analytical problem solving[cite: 3].</p>
             </div>
         </div>
     </section>
@@ -459,160 +400,60 @@
             </div>
         </div>
         <div class="footer-details">
-            <div>© 2026 KARTHIK NETHALA.</div>
-            <div>Do.No:65-2-10, Devinilayam, Kakinada, 533003.</div>
-            <div>+91 8247553115.</div>
+            <div>© 2026 KARTHIK NETHALA[cite: 3].</div>
+            <div>Do.No:65-2-10, Devinilayam, Kakinada, 533003[cite: 3].</div>
+            <div>+91 8247553115[cite: 3].</div>
         </div>
     </footer>
 
+    <!-- Interactive Scripts -->
     <script>
-        // --- DATA OBJECT FOR MODALS ---
-        // Replace the "contributions" links below with the actual images of your specific edits/posters!
-        const projectsData = {
-            "1": {
-                title: "Cinematic Slideshow",
-                subtitle: "Luxury Video Production",
-                description: "Conceptualized and edited high-end celebration visuals featuring seamless transitions, fluid motion, and professional color grading. The final deliverable elevated the aesthetic of the event experience.",
-                mainImage: "https://images.unsplash.com/photo-1589330694653-efa637bc37b4?q=80&w=2670&auto=format&fit=crop", // Acts as the Certificate / Hero graphic
-                contributions: [
-                    "https://images.unsplash.com/photo-1530103862676-de8892b07f82?q=80&w=800",
-                    "https://images.unsplash.com/photo-1516280440502-86395b8d2eb4?q=80&w=800",
-                    "https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=800",
-                    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800"
-                ]
-            },
-            "2": {
-                title: "SAMVIDH 2025",
-                subtitle: "State-Level Fest Promotion",
-                description: "Single-handedly directed the digital promotional strategy. Designed striking event branding, social media posts, and lead-generation assets that successfully onboarded participants and won the 'Best Organizer' award.",
-                mainImage: "https://images.unsplash.com/photo-1574015974293-817f0ebebb74?q=80&w=2670&auto=format&fit=crop", 
-                contributions: [
-                    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800",
-                    "https://images.unsplash.com/photo-1540039155732-676d73ac6914?q=80&w=800",
-                    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=800",
-                    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800"
-                ]
-            },
-            "3": {
-                title: "Strategic Marketing",
-                subtitle: "Data-Driven Visual Assets",
-                description: "Engineered highly targeted promotional scripts and visuals for specialized healthcare marketing and real estate logistics. Emphasized clear brand messaging to drive local community trust and active inquiries.",
-                mainImage: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2670&auto=format&fit=crop", 
-                contributions: [
-                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800",
-                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800",
-                    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=800",
-                    "https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=800"
-                ]
-            }
-        };
-
-        // Modal Logic
-        const modal = document.getElementById('projectModal');
-        const modalBody = document.getElementById('dynamicModalBody');
-        const triggers = document.querySelectorAll('.trigger-modal');
-        const closeBtn = document.getElementById('closeModal');
-
-        // Render functions for state swapping inside the modal
-        function renderMainView(data) {
-            return `
-                <div class="modal-view-1" id="modalView1">
-                    <div class="modal-hero-image" style="background-image: url('${data.mainImage}');"></div>
-                    <div class="modal-info-panel">
-                        <h2>${data.title}</h2>
-                        <h4>${data.subtitle}</h4>
-                        <p>${data.description}</p>
-                        <button class="btn-contribution" onclick="switchModalView('modalView2')">Contributions</button>
-                    </div>
-                </div>
-                <div class="modal-view-2 hidden" id="modalView2">
-                    <div class="modal-header-nav">
-                        <button class="btn-back" onclick="switchModalView('modalView1')">← Back to Overview</button>
-                        <h3 class="serif" style="color:var(--gold-primary); text-transform:uppercase;">Visual Contributions</h3>
-                    </div>
-                    <div class="contrib-grid">
-                        ${data.contributions.map(imgSrc => `<img class="contrib-item" src="${imgSrc}" alt="Project Contribution">`).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Exposed globally for onclick attributes in the dynamic HTML
-        window.switchModalView = function(viewId) {
-            const v1 = document.getElementById('modalView1');
-            const v2 = document.getElementById('modalView2');
-            if(viewId === 'modalView2') {
-                v1.classList.add('hidden');
-                setTimeout(() => v2.classList.remove('hidden'), 200);
-            } else {
-                v2.classList.add('hidden');
-                setTimeout(() => v1.classList.remove('hidden'), 200);
-            }
-        };
-
-        // Open Modal Event
-        triggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const id = trigger.getAttribute('data-id');
-                const projData = projectsData[id];
-                modalBody.innerHTML = renderMainView(projData);
-                modal.classList.add('active');
-                document.body.classList.add('modal-open');
-            });
-        });
-
-        // Close Modal Event
-        const closeModalFunction = () => {
-            modal.classList.remove('active');
-            document.body.classList.remove('modal-open');
-            // Slight delay to allow fade out before clearing HTML
-            setTimeout(() => { modalBody.innerHTML = ''; }, 400); 
-        };
-
-        closeBtn.addEventListener('click', closeModalFunction);
-
-        // Close if click outside wrapper
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) { closeModalFunction(); }
-        });
-
-
-        // Custom Cursor Logic
+        // Custom Cursor
         if (window.matchMedia("(pointer: fine)").matches) {
             const cursorDot = document.querySelector('.cursor-dot');
             const cursorOutline = document.querySelector('.cursor-outline');
 
             window.addEventListener('mousemove', function(e) {
-                const posX = e.clientX;
-                const posY = e.clientY;
-
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-                
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+                cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
             });
 
-            // Need event delegation for dynamically created buttons inside the modal
             document.addEventListener('mouseover', (e) => {
-                if(e.target.matches('a, .bento-card, .gallery-item, button, .play-cta')) {
+                if(e.target.closest('a, .bento-card, .cert-card, .nav-btn, .logo-wrapper, .intern-card')) {
                     cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
                     cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
                 }
             });
             document.addEventListener('mouseout', (e) => {
-                if(e.target.matches('a, .bento-card, .gallery-item, button, .play-cta')) {
+                if(e.target.closest('a, .bento-card, .cert-card, .nav-btn, .logo-wrapper, .intern-card')) {
                     cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
                     cursorOutline.style.backgroundColor = 'transparent';
                 }
             });
         }
 
+        // Carousel Drag & Scroll Logic
+        const track = document.getElementById('certificateTrack');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        const getScrollAmount = () => {
+            const card = track.querySelector('.cert-card');
+            return card ? card.offsetWidth + 32 : 350; 
+        };
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
         // High-Performance Scroll Reveal
         const revealElements = document.querySelectorAll('.reveal');
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -624,8 +465,6 @@
         }, observerOptions);
 
         revealElements.forEach(el => observer.observe(el));
-
-        // Force hero to reveal immediately on load
         setTimeout(() => {
             const hero = document.querySelector('.hero.reveal');
             if (hero) hero.classList.add('active');
